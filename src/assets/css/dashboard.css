@@ -1,0 +1,287 @@
+.dashboard_template{
+    width: 100%; height: 100%;
+    display: flex; flex-direction: row;
+    color: #fff; overflow-y: hidden;
+}
+.dashboard_bh{
+    width: calc(100% - 17rem);
+}
+
+/* Sidemenu ======================================================== */
+.dashboard_sidemenu{
+    display: flex; flex-direction: column; z-index: 2;
+    width: 17rem; height: 100vh; padding: .75rem;
+    background-color: #1a1a1a; transition: all .3s;
+    box-shadow: 5px 0px 10px rgba(0,0,0,.15);
+}
+.dashboard_sidemenu.min{
+    width: 5rem;
+}
+.dashboard_sidemenu.min + .dashboard_bh{
+    width: calc(100% - 5rem);
+}
+.dashboard_sidemenu head{
+    display: flex; flex-direction: column;
+}
+.dashboard_sidemenu img{
+    width: 2.5rem; max-height: 2.5rem; object-fit: contain;
+}
+.dashboard_sidemenu.min h2{display: none;}
+.dashboard_sidemenu .sidemenu_toggle{
+    width: 2rem; height: 2rem; margin-inline-start: auto;
+}
+
+.dashboard_sidemenu nav{
+    width: 100%; height: 100%; overflow: auto; overflow-x: hidden;
+    margin-top: 2rem;
+}
+.dashboard_sidemenu nav ul{
+    display: flex; flex-direction: column; gap: .25rem;
+}
+.dashboard_sidemenu nav li{
+}
+.dashboard_sidemenu nav .nav_item{
+    display: flex; align-items: center; cursor: pointer;
+    padding: .5rem; gap: .5rem; border-radius: 5px;
+}
+.dashboard_sidemenu nav .nav_item:hover{
+    background-color: #343434;
+}
+.dashboard_sidemenu nav .nav_item.nav_active{
+    background-color: #343434; border-inline-start: .35rem solid #7C3AED;
+}
+.dashboard_sidemenu.min nav > a{width: 100%;}
+.dashboard_sidemenu.min nav .nav_item{justify-content: center;}
+.dashboard_sidemenu.min nav .nav_item span{display: none;}
+.dashboard_sidemenu nav .nav_spacer{
+    width: 100%; border-bottom: 2px solid #464646;
+    margin: 1rem 0;
+}
+.dashboard_sidemenu nav .nav_header{
+    color: #9CA3AF; margin-bottom: .5rem; font-size: .9rem;
+}
+.dashboard_sidemenu nav .nav_group{}
+.dashboard_sidemenu nav .nav_group.open{}
+.dashboard_sidemenu nav .nav_group ul{
+    height: 0px; overflow: hidden; transition: all .3s;
+    padding-inline-start: 1rem; margin: .25rem 0;
+}
+.dashboard_sidemenu.min nav .nav_group.open ul{
+    position: absolute; margin-inline-start: 1rem;
+    background-color: #434343; padding-inline-start: 0;
+    padding: .5rem; align-items: flex-start;
+    border-radius: 5px;
+    z-index: 2;
+}
+.dashboard_sidemenu.min nav .nav_group.open ul span{ display: inline-block; }
+.dashboard_sidemenu nav .nav_group > .nav_item{ position: relative; }
+.dashboard_sidemenu nav .nav_group > .nav_item::after{
+    content: "\f0dd"; font-family: "Font Awesome 5 Pro"; transition: all .3s;
+    color: #A78BFA; margin-inline-start: auto; transform: rotate(90deg);
+}
+.dashboard_sidemenu.min nav .nav_group > .nav_item::after{
+    position: absolute; margin-inline-start: 3.5rem;
+}
+.dashboard_sidemenu nav .nav_group.open > .nav_item::after{
+    transform: rotate(0deg);
+}
+/* Sidemenu ======================================================== */
+
+/* Header ======================================================== */
+.dashboard_header{
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: .5rem; flex-wrap: wrap;
+    width: 100%; height: 4.25rem; padding: 1rem 2rem;
+    box-shadow: 5px 0px 2px 2px #1a1a1a; z-index: 10;
+}
+.dashboard_header .dashboard_search{
+    width: 20%; min-width: 6rem;
+}
+
+.dashboard_header > div{
+    margin-inline-start: auto;
+}
+
+.dashboard_header .notifications{}
+.dashboard_header .notification_bop{
+    width: .7rem; height: .7rem;
+    border-radius: 50%;
+    position: absolute; top: 3px; left: 3px;
+}
+
+.dashboard_header .profile{
+    display: flex; flex-direction: column; gap: .5rem;
+    border-radius: 5px; transition: all .3s; cursor: pointer;
+}
+.dashboard_header .profile.open{
+    background-color: #343434; padding: .5rem;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.15);
+}
+.dashboard_header .profile .avatar{
+    width: 2.25rem; max-height: 2.25rem;
+    border-radius: 50%; box-shadow: 0px 5px 10px rgba(0,0,0,.25);
+    border: 1px solid #464646;
+}
+.dashboard_header .profile .avatar img{
+    width: 2.25rem; max-height: 2.25rem; object-fit: contain;
+    border-radius: 50%;
+}
+.dashboard_header .profile h5{}
+.dashboard_header .profile small{}
+.dashboard_header .profile.open .text{display: flex;}
+
+.dashboard_header .profile > ul{
+    max-height: 0; width: 0; overflow: hidden; transition: all .3s;
+}
+.dashboard_header .profile.open > ul{
+    width: auto; margin-top: .5rem; max-height: 10rem; overflow: auto;
+}
+.dashboard_header .profile ul .nav_spacer{
+    width: 100%; border-bottom: 2px solid #464646;
+    margin: .5rem 0;
+}
+.dashboard_header .profile ul .nav_item{
+    display: flex; align-items: center; cursor: pointer;
+    padding: .5rem; gap: .5rem; border-radius: 5px;
+}
+.dashboard_header .profile ul .nav_item:hover{
+    background-color: #242424;
+}
+/* Header ======================================================== */
+
+/* Notification List ======================================================== */
+.notification_list{
+    position: absolute;
+    width: 25rem; height: 0; max-height: calc(100vh - 5rem);
+    overflow: hidden;
+    border-radius: 5px; margin-inline-start: -7rem;
+    background-color: #343434; box-shadow: 0px 5px 15px rgba(0,0,0,.35);
+    transition: all .3s;
+}
+@media (min-width: 768px){
+    .notification_list{ margin-inline-start: -23rem; }
+}
+.notification_list.open{
+    height: 35rem;
+}
+
+.notification_list ul{
+    display: flex; flex-direction: column; gap: .5rem;
+    height: calc(100% - 6rem); overflow: auto;
+}
+.notification_list ul li{
+    position: relative;
+    display: flex; align-items: flex-start; justify-content: flex-start; gap: 1rem;
+    width: 100%; padding: 1rem; background-color: #3a3a3a;
+}
+.notification_list ul li .notif_icon{
+    border-width: 1px; border-style: solid; border-color: transparent; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    padding: .5rem; width: 3rem; height: 3rem;
+    box-shadow: inset 0px 0px 10px rgb(0, 0, 0, 35%);
+}
+.notification_list ul li .notif_info{
+    width: calc(100% - 7rem); flex-grow: 1;
+}
+/* Notification List ======================================================== */
+
+/* Message Board ======================================================== */
+.message_board{
+    position: fixed; top: 0; inset-inline-end: 0;
+    display: flex; flex-direction: column; z-index: 10;
+    width: 24rem; height: 100vh; padding: 1rem;
+    background-color: #1a1a1a; transition: all .3s;
+    box-shadow: 5px 0px 10px rgba(0,0,0,.15);
+    transform: translateX(24rem);
+    color: #fff;
+}
+[dir="rtl"] .message_board{ transform: translateX(-24rem); }
+.message_board.open{ transform: translateX(0); }
+
+.message_board .message_board_page{
+    display: flex; flex-direction: column;
+    width: 100%; height: calc(100% - 5rem);
+}
+
+.message_board ul[name="chat_ul"],.message_board ul[name="message_ul"],.message_board ul[name="people_ul"]{
+    display: flex; flex-direction: column; gap: 1rem;
+    height: 100%; overflow: auto; overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+.message_board ul[name="chat_ul"] li,.message_board ul[name="people_ul"] li{
+    position: relative; cursor: pointer;
+    display: flex; align-items: flex-start; justify-content: flex-start; gap: 1rem;
+    width: 100%; padding-bottom: 1rem;
+    border-bottom: 1px solid #3a3a3a;
+}
+.message_board .chat_avatar{
+    position: relative; border-radius: 50%;
+    border-width: 2px; border-style: solid;
+    display: flex; justify-content: center; align-items: center;
+    width: 3rem; height: 3rem;
+    box-shadow: inset 0px 0px 10px rgb(0, 0, 0, 35%);
+}
+.message_board .chat_avatar img{
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 50%;
+}
+.message_board .chat_avatar i{
+    position: absolute; right: 0; top: 0;
+}
+
+.message_board ul[name="chat_ul"] li .chat_info{
+    width: calc(100% - 7rem); flex-grow: 1;
+}
+.message_board ul[name="chat_ul"] li .chat_info b{
+    white-space: nowrap; text-overflow: ellipsis;
+}
+
+.message_board ul[name="message_ul"] li{
+    display: flex; padding: 0 .25rem;
+}
+.message_board ul[name="message_ul"] li .message_bubble{
+    max-width: 80%; padding: .5rem;
+}
+.message_board ul[name="message_ul"] li .message_bubble.sent{
+    margin-left: auto; border-radius: 10px 10px 0 10px;
+    background-color: #4C1D95;
+}
+.message_board ul[name="message_ul"] li .message_bubble.received{
+    margin-right: auto; border-radius: 10px 10px 10px 0;
+    background-color: #464646;
+}
+
+.message_board .new_chat{
+    position: fixed; inset-inline-end: 1.5rem; bottom: 1.5rem;
+    color: #000; padding: 1rem;
+    border-radius: 50%;
+}
+
+/* Message Board ======================================================== */
+
+/* Body ======================================================== */
+.dashboard_body{
+    width: 100%; height: 100%; overflow: auto;
+    display: flex; flex-direction: column;
+    padding: 2rem; border-radius: 5px;
+}
+/* Body ======================================================== */
+
+/* Toast ======================================================== */
+.dashboard_toast{
+    position: absolute; top: 6rem; right: 2rem; z-index: 100;
+    background-color: #434343;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.25);
+    display: flex; flex-direction: row; align-items: center; gap: 1.25rem;
+    border-inline-start-width: .5rem;
+    border-inline-start-style: solid;
+    border-radius: 5px;
+    padding: .5rem 0;
+    padding-inline-start: 1.25rem;
+    padding-inline-end: 2rem;
+}
+.dashboard_toast_close{
+    width: 1.5rem; height: 1.5rem;
+    position: absolute; top: .25rem; right: .25rem; padding: .25rem;
+}
+/* Toast ======================================================== */
